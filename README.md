@@ -1,21 +1,115 @@
-# Car Price Predictor (CarDekho dataset)
+# 🚗 Car Price Prediction
 
-A Flask web app that predicts used car prices using a Linear Regression model,
-retrained on the CarDekho dataset (`CAR_DETAILS_FROM_CAR_DEKHO.csv`).
+A Machine Learning project that predicts the selling price of a used car using **Linear Regression**. The model is trained on the CarDekho dataset and deployed with **Flask**.
 
-## Project structure
+## 📌 Features
 
+* Predicts used car prices based on car details.
+* Built using Linear Regression.
+* Data preprocessing with Scikit-learn Pipeline.
+* Handles categorical features using OneHotEncoder.
+* Model saved using Pickle for quick loading.
+
+## 🛠️ Technologies Used
+
+* Python
+* Flask
+* Pandas
+* NumPy
+* Scikit-learn
+* Pickle
+
+## 📂 Project Structure
+
+```text
+Car-Price-Prediction/
+│── application.py
+│── LinearRegressionModel.pkl
+│── Cleaned_Car_data.csv
+│── model_utils.py
+│── requirements.txt
+│── Procfile
+│── README.md
+│── .gitignore
 ```
-├── application.py              # Flask app (run this to start the server)
-├── model_utils.py               # Shared helper needed to load the pickled model
-├── train_model.py                # Script that cleans data + trains + saves the model
-├── CAR_DETAILS_FROM_CAR_DEKHO.csv  # Raw source data
-├── Cleaned_Car_data.csv          # Cleaned data (auto-generated, used by the app)
-├── LinearRegressionModel.pkl     # Trained model (auto-generated, used by the app)
-├── requirements.txt
-├── Procfile                      # For deployment (Heroku/Render, gunicorn)
-├── templates/
-│   └── index.html                # Web form UI
-└── static/
-    └── css/
-        └── style.css
+
+## 📊 Dataset
+
+This project uses the **CarDekho Used Car Dataset**.
+
+**Input Features**
+
+* Company
+* Car Name
+* Year
+* Fuel Type
+* Seller Type
+* Transmission
+* Owner
+* Kilometers Driven
+
+**Target**
+
+* Selling Price
+
+## ⚙️ Machine Learning Workflow
+
+1. Data Cleaning
+2. Data Preprocessing
+3. Train-Test Split
+4. Feature Encoding using OneHotEncoder
+5. Model Training with Linear Regression
+6. Model Saving using Pickle
+
+## 🚀 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/Car-Price-Prediction.git
+```
+
+Go to the project directory:
+
+```bash
+cd Car-Price-Prediction
+```
+
+Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the Flask application:
+
+```bash
+python application.py
+```
+
+The application will start on:
+
+```text
+http://127.0.0.1:5000/
+```
+
+## 📈 Model
+
+* **Algorithm:** Linear Regression
+* **Preprocessing:** Scikit-learn Pipeline
+* **Model File:** `LinearRegressionModel.pkl`
+
+## 💡 Future Improvements
+
+* Improve prediction accuracy using ensemble models such as Random Forest or XGBoost.
+* Add model evaluation metrics.
+* Deploy the application on Render or another cloud platform.
+* Build a REST API for predictions.
+
+## 👩‍💻 Author
+
+**Swati Singh**
+
+GitHub: https://github.com/Swatisingh7086
+
+LinkedIn:https://www.linkedin.com/in/swati-singh-01b70141b
