@@ -25,6 +25,9 @@ df = pd.read_csv('CAR_DETAILS_FROM_CAR_DEKHO.csv')
 
 
 print("Shape of Dataset:", df.shape)
+df.to_csv("Cleaned_Car_data.csv", index=False)
+print("Cleaned dataset saved successfully.")
+
 print(df.head())
 
 print("\nDataset Information")
@@ -71,10 +74,12 @@ print("Duplicates Removed :", before - len(df))
 print("New Shape :", df.shape)
 
 if "name" in df.columns:
-    df["brand"] = df["name"].str.split().str[0]
+    df["brand"] = df["name"].apply(lambda x: str(x).split()[0])
+    df["model"] = df["name"].apply(lambda x: " ".join(str(x).split()[1:]))
 
 elif "car_name" in df.columns:
-    df["brand"] = df["car_name"].str.split().str[0]
+    df["brand"] = df["car_name"].apply(lambda x: str(x).split()[0])
+    df["model"] = df["car_name"].apply(lambda x: " ".join(str(x).split()[1:]))
 
 brand_count = df["brand"].value_counts()
 
@@ -87,6 +92,9 @@ if "name" in df.columns:
 
 if "car_name" in df.columns:
     df.drop("car_name", axis=1, inplace=True)
+
+df.to_csv("Cleaned_Car_data.csv", index=False)
+print("Cleaned dataset saved successfully.")
 
 print(df.head())
 plt.figure(figsize=(8,5))
@@ -201,7 +209,8 @@ for col in [
     "seller_type",
     "transmission",
     "owner",
-    "brand"
+    "brand",
+    "model"
 ]:
     if col in df.columns:
         categorical_columns.append(col)
@@ -340,11 +349,6 @@ print("\nTraining Completed Successfully!")
 print(f"R2 Score  : {r2:.4f}")
 print(f"MAE       : {mae:.2f}")
 print(f"RMSE      : {rmse:.2f}")
-import pickle
-
-pickle.dump(model, open("LinearRegressionModel.pkl", "wb"))
-
-print("Model saved successfully.")
 pickle.dump(X.columns.tolist(), open("model_columns.pkl", "wb"))
 
 print("Feature columns saved successfully.")

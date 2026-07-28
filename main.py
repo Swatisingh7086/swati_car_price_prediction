@@ -9,6 +9,8 @@ sns.set_style("whitegrid")
 plt.rcParams["figure.figsize"] = (8, 5)
 
 df = pd.read_csv('Cleaned_Car_data.csv')
+print(df.columns.tolist())
+print(df.head())
 print("Shape:", df.shape)
 df.head()
 
